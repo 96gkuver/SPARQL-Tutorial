@@ -4,7 +4,7 @@ SPARQL is a query language like SQL but it queries RDF (Resource Description Fra
 
 # SPARQL QUERY STRUCTURE 
 
-## PREFIX
+### PREFIX
 
 Namespace for possible relations to query (i.e. the prefix for querying book objects would have a title relation)
 
@@ -12,7 +12,7 @@ Namespace for possible relations to query (i.e. the prefix for querying book obj
 PREFIX book-info: <http://www.example.com/books-info>
 ````
 
-## SELECT
+### SELECT
 
 Determines what set of queried data is returned (i.e. the titles of selected books)
 
@@ -22,7 +22,7 @@ SELECT ?title
 
 *** Note: In SPARQL, variable names start with '?' ***
 
-## FROM
+### FROM
 
 Determines the database to be queried (i.e. a library's inventory site)
 
@@ -30,7 +30,7 @@ Determines the database to be queried (i.e. a library's inventory site)
 FROM <http://www.example.com/books-info.rdf>
 ```
 
-## WHERE
+### WHERE
 
 Determines the pattern that you are looking for within the dataset (i.e. return all books that have titles)
 
@@ -40,13 +40,32 @@ WHERE { ?books book-info:title ?title }
 
 *** Note: WHERE clauses are made up of the triple: subject, predicate, and object ***
 
-## ORDER BY (OTHER RESULT MODIFIERS)
+### ORDER BY (OTHER RESULT MODIFIERS)
 
 Organize the query results in a specific way (i.e. by the titles of the returned books)
 
 ```
 ORDER BY ?title
 ```
+
+# MAKING YOUR OWN QUERY
+
+In order to make a SPARQL query, you need a SPARQL endpoint (a site that will run your query on a RDF database). For this tutorial we will be using a dbpedia SPARQL query endpoint: [dbpedia.org/snorql/](http://dbpedia.org/snorql/)
+
+If you go to the endpoint website you'll see a few different prefixs that the endpoint already has setup (owl, xsd, rdfs, etc...). For our first query we'll use the "foaf" prefix, which is a prefix for decscribing people, their relationships, activities, etc...
+
+To start off, we'll query all people in the database that have names:
+
+```
+SELECT * 
+WHERE {
+    ?person foaf:name ?name .
+}
+```
+
+You should get a result like this: 
+
+![Query Result](screenshots/name_result.png?raw=true)
 
 ## Header 2
 
