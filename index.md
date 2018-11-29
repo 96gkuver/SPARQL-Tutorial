@@ -1,18 +1,6 @@
----
-layout: default
----
+# What is SPARQL?
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
-
-[Link to another page](./another-page.html).
-
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+SPARQL is a query language like SQL but it queries RDF (Resource Description Framework) databases, databases that are a network of objects connected by their relations to each other. For instance, the object Library would be connected to the object Books by a "contains" relation. 
 
 ## Header 2
 
