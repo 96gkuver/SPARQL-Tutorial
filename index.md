@@ -2,6 +2,52 @@
 
 SPARQL is a query language like SQL but it queries RDF (Resource Description Framework) databases, databases that are a network of objects connected by their relations to each other. For instance, the object Library would be connected to the object Books by a "contains" relation. 
 
+# SPARQL QUERY STRUCTURE 
+
+## PREFIX
+
+Namespace for possible relations to query (i.e. the prefix for querying book objects would have a title relation)
+
+```
+PREFIX book-info: <http://www.example.com/books-info>
+````
+
+## SELECT
+
+Determines what set of queried data is returned (i.e. the titles of selected books)
+
+```
+SELECT ?title
+```
+
+*** Note: In SPARQL, variable names start with '?' ***
+
+## FROM
+
+Determines the database to be queried (i.e. a library's inventory site)
+
+```
+FROM <http://www.example.com/books-info.rdf>
+```
+
+## WHERE
+
+Determines the pattern that you are looking for within the dataset (i.e. return all books that have titles)
+
+```
+WHERE { ?books book-info:title ?title }
+```
+
+*** Note: WHERE clauses are made up of the triple: subject, predicate, and object ***
+
+## ORDER BY (OTHER RESULT MODIFIERS)
+
+Organize the query results in a specific way (i.e. by the titles of the returned books)
+
+```
+ORDER BY ?title
+```
+
 ## Header 2
 
 > This is a blockquote following a header.
