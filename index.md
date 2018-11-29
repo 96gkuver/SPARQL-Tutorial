@@ -54,6 +54,8 @@ In order to make a SPARQL query, you need a SPARQL endpoint (a site that will ru
 
 If you go to the endpoint website you'll see a few different prefixs that the endpoint already has setup (owl, xsd, rdfs, etc...). For our first query we'll use the "foaf" prefix, which is a prefix for decscribing people, their relationships, activities, etc...
 
+### QUERYING ALL NAMES 
+
 To start off, we'll query all people in the database that have names:
 
 ```
@@ -65,7 +67,28 @@ WHERE {
 
 You should get a result like this: 
 
-![Query Result](screenshots/name_result.png?raw=true)
+![Name Query Result](screenshots/name_result.PNG?raw=true)
+
+#### Explanation
+
+For this query we used the WHERE clause "?person foaf:name ?name .", this clause looks for all person classes that have a name class. Then in the SELECT statement we used the wildcard operator from SQL (\*) to return all the variables (?person and ?name) we set in the WHERE clause. Thus our result has two columns, person (which has the person class that links to all the info about that person), and name (which is the string that is the name for that person)
+
+*** Note: We did not need to use FROM operator in our SPARQL statement because running the query on this endpoint automatically runs the query on the dbpedia database ***
+
+### QUERYING A SPECIFIC NAME
+
+For the next query, we'll get a little more specific. We'll query all people classes that have the name "George Washington" and return the person classes:
+
+```
+SELECT ?person 
+WHERE {
+    ?person foaf:name "George Washington"@en .
+}
+```
+
+You should get a result like this:
+
+![Washington Query Result](screenshots/washington_result.PNG?raw=true)
 
 ## Header 2
 
