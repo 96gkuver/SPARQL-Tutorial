@@ -4,6 +4,8 @@ SPARQL is a query language like SQL but it queries RDF (Resource Description Fra
 
 # SPARQL QUERY STRUCTURE 
 
+RDF models are tripes in a subject -> predicate -> object form. The subject, predicate, and object are generally represented as URIs however they can be shortened by using PREFIX as described below.
+
 ### PREFIX
 
 Namespace for possible relations to query (i.e. the prefix for querying book objects would have a title relation)
@@ -46,6 +48,14 @@ Organize the query results in a specific way (i.e. by the titles of the returned
 
 ```
 ORDER BY ?title
+```
+
+### LIMIT
+
+You can set the maximum results returned by a query. For example you want to limit the number for results to 3:
+
+```
+WHERE { ... } LIMIT 3
 ```
 
 # MAKING YOUR OWN QUERY
@@ -93,3 +103,18 @@ You should get a result like this:
 #### Explanation
 
 For this query we used the same WHERE clause as in the first query but we switched the variable ?name with an actual name string ("George Washington"). So instead of looking for all person classes with a name, it looked for all person classess that contained "George Washington" in the name. Then in our SELECT statement we specified we just wanted the ?person variable, thus our result was just one column with all the person classes that matched the WHERE clause.  
+
+### UNION
+
+Say you wanted to find all the people named "George Washington" and "John" in one search and combine the result. Then you could use UNION:
+
+```
+SELECT ?person
+WHERE {
+	{?person foaf:name "George Washington"@en } UNION {?person foaf:name "John"}
+}
+```
+
+You should get a result like this:
+![Washington UNION John Result](screenshots/GeorgeJohn.PNG?raw=true)
+
