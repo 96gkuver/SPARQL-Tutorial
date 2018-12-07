@@ -138,3 +138,22 @@ You should get a result like this:
 
 #### Explanation
 There are many things happening in this query. First, we define that ?country should be limited to only Populated Places. Then, we get all the names of the places in name. After that, we are getting the total populations of all the places in pop. We then apply a filter that only keeps those with a population greater than 1,000,000,000. Finally, once we have our data we sort it by name and then limit our output to the first three results.
+
+### OPTIONAL
+
+SPARQL also gives users the option to only include column data for a query when a row might not have a property. For example:
+
+```
+SELECT ?name ?spouse WHERE {
+    ?person foaf:name ?name .
+    OPTIONAL{ ?person dbo:spouse ?spouse }
+}
+```
+
+You should get a result like this:
+
+![Spouse Result](screenshots/spouse.png?raw=true)
+
+#### Explanation
+
+Some of the results from this search do not contain data in the spouse row because it is an optional column based on the search. When you have data that might not have all the same properties other than the main one you are looking for OPTIONAL makes it easy to list other properties easily.
