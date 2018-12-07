@@ -111,7 +111,7 @@ Say you wanted to find all the people named "George Washington" and "John" in on
 ```
 SELECT ?person
 WHERE {
-	{?person foaf:name "George Washington"@en } UNION {?person foaf:name "John"}
+	{?person foaf:name "George Washington"@en } UNION {?person foaf:name "John"@en}
 }
 ```
 
