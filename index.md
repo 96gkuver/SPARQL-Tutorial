@@ -118,3 +118,21 @@ WHERE {
 You should get a result like this:
 ![Washington UNION John Result](screenshots/GeorgeJohn.PNG?raw=true)
 
+### FILTER
+
+You can also filter you queries by using FILTER and giving it a conditional. The following example gives first 3 populated places alphabettically that have a population greater than 1,000,000,000.
+
+```
+SELECT * WHERE {
+    ?place a dbo:PopulatedPlace .
+    ?place foaf:name ?name .
+    ?place dbo:populationTotal ?pop .
+    FILTER(?pop > 1000000000) .
+} ORDER BY ?name LIMIT 3
+```
+
+You should get a result like this:
+![Populations Result](screenshots/Population.PNG?raw=true)
+
+#### Explanation
+There are many things happening in this query. First we define that ?country should be limited to only Populated Places. Then we get all the names of the places in name. After that we are getting the total populations of all the places in pop. We then apply a filter that only keeps those with a population greater than 1,000,000,000. Finally once we have our data we sort it by name and then limit our output to the first three results.
