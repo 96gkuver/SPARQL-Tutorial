@@ -134,7 +134,7 @@ SELECT * WHERE {
 
 You should get a result like this:
 
-![Populations Result](screenshots/Population.png =250x)
+![Populations Result](screenshots/Population.png | width = 100)
 
 #### Explanation
 There are many things happening in this query. First, we define that ?country should be limited to only Populated Places. Then, we get all the names of the places in name. After that, we are getting the total populations of all the places in pop. We then apply a filter that only keeps those with a population greater than 1,000,000,000. Finally, once we have our data we sort it by name and then limit our output to the first three results.
